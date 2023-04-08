@@ -1,6 +1,5 @@
 import requests
 import json
-import urllib.parse
 
 from twilio.rest import Client
 from flask import Flask, request, redirect
@@ -26,7 +25,7 @@ def whatsapp():
         url = 'https://api.spoonacular.com/recipes/random?apiKey=[API_KEY]&number=1&tags=vegetarian'
         response = get_recipe(url)
     elif 'non-veg' in message_body:
-        url = 'https://api.spoonacular.com/recipes/random?apiKey=[API_KEY]&number=1&tags=nonvegetarian'
+        url = 'https://api.spoonacular.com/recipes/random?apiKey=[API_KEY]&number=1&tags='
         response = get_recipe(url)
     else:
         response = "I'm sorry, I didn't understand your message. Please reply with 'veg' or 'non-veg'."
@@ -55,4 +54,4 @@ def send_message(sender, message):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
